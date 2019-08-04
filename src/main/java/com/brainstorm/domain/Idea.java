@@ -7,12 +7,10 @@ import org.bson.types.ObjectId;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.LastModifiedDate;
-import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.util.Date;
-import java.util.List;
 
 @Document(collection = "idea")
 @Data
@@ -38,8 +36,14 @@ public class Idea {
     @LastModifiedDate
     private Date lastModifiedDate;
 
-    @DBRef
-    private List<Voter> voters;
+    @Field(value = "thumb_up")
+    private long thumbUp;
+
+    @Field(value = "thumb_down")
+    private long thumbDown;
+
+    //    @DBRef
+//    private List<Voter> voters;
 
 //    public Idea(String title, String description, Category category, List<Voter> voters) {
 //        this.title = title;
