@@ -42,6 +42,9 @@ public class Idea {
     @Field(value = "thumb_down")
     private long thumbDown;
 
+    @Field(value = "picture")
+    private String picture;
+
     //    @DBRef
 //    private List<Voter> voters;
 
