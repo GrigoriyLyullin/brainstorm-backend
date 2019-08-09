@@ -36,15 +36,15 @@ public class VotingController {
             } else {
                 thumbDownVoters.add(user);
             }
-        }
-
-        // if user already voted and want to change the decision
-        if (thumbUp) {
-            thumbDownVoters.remove(user);
-            thumbUpVoters.add(user);
         } else {
-            thumbUpVoters.remove(user);
-            thumbDownVoters.add(user);
+            // if user already voted and want to change the decision
+            if (thumbUp) {
+                thumbDownVoters.remove(user);
+                thumbUpVoters.add(user);
+            } else {
+                thumbUpVoters.remove(user);
+                thumbDownVoters.add(user);
+            }
         }
 
         ideaRepository.save(idea);
