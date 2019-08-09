@@ -1,1 +1,16 @@
-
+spring:
+  data:
+    mongodb:
+      database: brainstorm
+    rest:
+      base-path: /api
+logging:
+  level:
+    org:
+      springframework:
+        security: trace
+brainstorm:
+  clientId: brainstorm-jwt-client
+  clientSecret: admin
+  serverUrl: https://brainstorm-auth-app.herokuapp.com/oauth/check_token
+  serverResourceId: brainstorm-oauth2-server
