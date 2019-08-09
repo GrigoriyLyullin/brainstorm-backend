@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
+import java.util.Set;
 
 @RestController
 @AllArgsConstructor
@@ -26,8 +26,8 @@ public class VotingController {
                                       @RequestParam("thumbUp") boolean thumbUp) {
 
         Idea idea = ideaRepository.findById(ideaId).orElseThrow();
-        List<String> thumbUpVoters = idea.getThumbUp();
-        List<String> thumbDownVoters = idea.getThumbDown();
+        Set<String> thumbUpVoters = idea.getThumbUp();
+        Set<String> thumbDownVoters = idea.getThumbDown();
 
         // if it user is voting for the first time
         if (!thumbUpVoters.contains(user) && !thumbDownVoters.contains(user)) {

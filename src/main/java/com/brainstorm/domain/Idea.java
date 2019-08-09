@@ -13,6 +13,7 @@ import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 @Document(collection = "idea")
 @Data
@@ -30,7 +31,7 @@ public class Idea {
     private String description;
 
     @DBRef
-    private List<Category> categories;
+    private Set<Category> categories;
 
     @CreatedDate
     private Date createdDate;
@@ -39,15 +40,15 @@ public class Idea {
     private Date lastModifiedDate;
 
     @Field(value = "thumb_up")
-    private List<String> thumbUp;
+    private Set<String> thumbUp;
 
     @Field(value = "thumb_down")
-    private List<String> thumbDown;
+    private Set<String> thumbDown;
 
     @Field(value = "picture")
     private String picture;
 
-    public Idea(String title, String description, List<Category> categories) {
+    public Idea(String title, String description, Set<Category> categories) {
         this.title = title;
         this.description = description;
         this.categories = categories;

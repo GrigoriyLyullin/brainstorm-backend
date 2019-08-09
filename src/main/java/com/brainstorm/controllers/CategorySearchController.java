@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @RestController
@@ -17,8 +17,8 @@ public class CategorySearchController {
     private CategoryRepository categoryRepository;
 
     @GetMapping(path = "/api/findCategoriesByName")
-    public List<CategoryDTO> findCategoriesByName(@RequestParam("name") String name) {
+    public Set<CategoryDTO> findCategoriesByName(@RequestParam("name") String name) {
         return categoryRepository.findTop5ByCategoryContainingIgnoreCase(name).stream()
-                .map(c -> new CategoryDTO(c.getId().toString(), c.getCategory())).collect(Collectors.toList());
+                .map(c -> new CategoryDTO(c.getId().toString(), c.getCategory())).collect(Collectors.toSet());
     }
 }

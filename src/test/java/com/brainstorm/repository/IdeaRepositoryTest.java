@@ -34,11 +34,11 @@ class IdeaRepositoryTest {
 
         categoryRepository.save(category);
 
-        Idea idea = ideaRepository.save(new Idea(testTitle, testDescription, Collections.singletonList(category)));
+        Idea idea = ideaRepository.save(new Idea(testTitle, testDescription, Collections.singleton(category)));
 
         assertNotNull(idea.getId());
         assertEquals(testTitle, idea.getTitle());
         assertEquals(testDescription, idea.getDescription());
-        assertEquals(testCategory, idea.getCategories().get(0).getCategory());
+        assertEquals(testCategory, idea.getCategories().iterator().next().getCategory());
     }
 }
